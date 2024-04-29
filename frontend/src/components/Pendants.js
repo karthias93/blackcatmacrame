@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Container } from "react-bootstrap";
+// import { Row, Col, Container } from "react-bootstrap";
 import Product from "./Product";
 import Message from "./Message";
 import Loader from "./Loader";
@@ -24,24 +24,25 @@ const Pendants = ({match}) => {
   }, [dispatch, keyword, pageNumber]);
 
   return (
-    <Container fluid className="featured_products_container">
+    <div className="featured_products_container container mx-auto px-4">
       <Meta />
-      <h1 className="latest_products text-center">Pendants</h1>
+      <h1 className="latest_products text-center text-3xl font-bold my-4">Pendants</h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
-      ) : (<Container>
-        <Row>
+      ) : (
+      <>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {products.map((product) => (
-            <Col key={product._id} sm={6} md={6} lg={4} xl={4}>
+            <div key={product._id}>
               <Product product={product} />
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
         <Paginate pages={pages} page={page} keyword={keyword ? keyword : ""} />
-      </Container>)}
-    </Container>)
+      </>)}
+    </div>)
 }
 
 export default Pendants

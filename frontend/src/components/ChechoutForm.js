@@ -91,13 +91,13 @@ export default function CheckoutForm({successPaymentHandler, userEmail}) {
 			<button
 				disabled={isLoading || !stripe || !elements}
 				id="submit"
-				className="btn btn-primary mt-2"
+				className="bg-blue-500 text-white py-2 px-4 rounded mt-2"
 			>
 				<span id="button-text">
 					{isLoading ? (
-						<div className="spinner-border text-light" role="status">
-							<span className="visually-hidden">Loading...</span>
-						</div>
+						<div class="border border-gray-700 rounded-full animate-spin p-4 flex items-center justify-center">
+						    <span class="sr-only">Loading...</span>
+					  </div>
 					) : (
 						"Pay now"
 					)}

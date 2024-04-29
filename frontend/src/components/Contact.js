@@ -1,31 +1,53 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import '../screens/homescreen.css'
-import ContactImage from '../components/images/contactMe1.png'
-import ContactForm from './ContactForm'
+// import React from 'react'
+// import { Container, Row, Col } from 'react-bootstrap'
+// import '../screens/homescreen.css'
+// import ContactImage from '../components/images/contactMe1.png'
+// import ContactForm from './ContactForm'
+
+// function Contact() {
+//   return (
+//     <>
+//       <Container fluid className='contact_container'>
+//       </Container>
+    
+//       <Container>
+//         <Row>
+//           <Col>
+//             <h1 className='text-center'>Fill Out Form to   Contact Me</h1>
+//             <ContactForm />
+//           </Col>
+//         </Row>
+//       </Container>
+//     </>
+//   )
+// }
+// export default Contact
+
+import React from 'react';
+import ContactImage from '../components/images/contactMe1.png';
+import ContactForm from './ContactForm';
 
 function Contact() {
   return (
     <>
-    <Container fluid className='contact_container'>
-       {/* <img src={ContactImage} className="contact_background_image"></img> */}
-    </Container>
-    
-    <Container>
-      <Row>
-        <Col>
-          <h1 className='text-center'>Fill Out Form to Contact Me</h1>
-            <ContactForm />
-        </Col>
-      </Row>
-    </Container>
-    
-    </>
+      <div className="contact_container">
+        <img src={ContactImage} className="contact_background_image" alt="Contact Background"></img>
+      </div>
 
-  )
+      <div className="container mx-auto">
+        <div className="py-12">
+          <h1 className="text-center text-4xl font-bold mb-8">Fill Out Form to Contact Me</h1>
+          <div className="max-w-lg mx-auto">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Contact
+export default Contact;
+
 
 
           {/* <div className='left_side_div'>

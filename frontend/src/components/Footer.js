@@ -1,31 +1,28 @@
 import React from 'react'
-import { Container, Row, Col} from 'react-bootstrap';
-import {LinkContainer} from "react-router-bootstrap";
+import { Row, Col} from 'antd';
+import {Link} from "react-router-dom";
 import logo from '../components/blackcatlogo2.jpg';
 
 const Footer = () => {
   return (
     <footer>
-      <Container fluid className='footer_container'> 
-        <Row>
+      <div fluid className='footer_container'> 
+        <Row className='footer_sec'>
           
           <Col className='text-center py-3 text-info mr-4'>
           <ul className='list-unstyled'>
-            <LinkContainer to="/">
+            <Link to="/">
                 <li><button className='footerButtons'>Home</button></li>
-             </LinkContainer>
-            <LinkContainer to="story">
+             </Link>
+            <Link to="story">
                 <li><button className='footerButtons'>My Story</button></li>
-             </LinkContainer>
-            <LinkContainer to="products">
+             </Link>
+            <Link to="products">
                 <li><button className='footerButtons'>Products</button></li>
-             </LinkContainer>
-            <LinkContainer to="contact">
+             </Link>
+            <Link to="contact">
                 <li><button className='footerButtons'>Contact Me</button></li>
-             </LinkContainer>
-
-  
-
+             </Link>
             </ul>
           </Col>
            <Col>
@@ -52,7 +49,7 @@ const Footer = () => {
 
           
         </Row>
-      </Container>
+      </div>
       <div className='text-center py-3 copyRight'>Copyright &copy; Black Cat Macrame</div>
     </footer>
   )

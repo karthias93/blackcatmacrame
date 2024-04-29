@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arima&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .Product_card{
     box-shadow: 10px 10px 10px pink;
