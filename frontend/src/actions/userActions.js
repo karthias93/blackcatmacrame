@@ -32,6 +32,7 @@ import {
   USER_UPDATE_PASSWORD_FAIL,  
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
+import { googleLogout } from '@react-oauth/google'
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -48,6 +49,40 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       '/api/users/login',
       { email, password },
+      config
+    )
+
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
+  } catch (error) {
+    dispatch({
+      type: USER_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const googleAuth = (credentialResponse) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+    })
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    const { data } = await axios.post(
+      '/api/users/google-auth',
+      { ...credentialResponse },
       config
     )
 
@@ -143,6 +178,7 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem('cartItems')
   localStorage.removeItem('shippingAddress')
   localStorage.removeItem('paymentMethod')
+  googleLogout();
   dispatch({ type: USER_LOGOUT })
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: ORDER_LIST_MY_RESET })
