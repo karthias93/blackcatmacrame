@@ -44,10 +44,6 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-
-
-
-          
         </Row>
       </div>
       <div className='text-center py-3 copyRight'>Copyright &copy; Black Cat Macrame</div>

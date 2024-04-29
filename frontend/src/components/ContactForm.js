@@ -55,7 +55,7 @@ import '../index.css';
 
 function ContactForm() {
   return (
-    <div className="form_container bg-white rounded shadow-md p-8 flex flex-col">
+    <div className="form_container">
       <h2 className="text-xl font-bold mb-4 text-center">Contact Me</h2>
       <form action="https://formspree.io/f/xoqbakor" method="POST" id="contact-form">
         <div className="mb-4">
@@ -70,6 +70,7 @@ function ContactForm() {
         <div className="mb-4">
           <input
             type="number"
+            inputmode="numeric"
             className="form-control block w-full px-3 py-2 rounded border-gray-300 focus:outline-none focus:ring-primary-blue focus:border-primary-blue"
             id="phoneNumber"
             name="phoneNumber"
