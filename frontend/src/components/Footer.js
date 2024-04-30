@@ -6,7 +6,7 @@ import logo from '../components/blackcatlogo2.jpg';
 const Footer = () => {
   return (
     <footer>
-      <div fluid className='footer_container'> 
+      <div className='footer_container'> 
         <Row className='footer_sec'>
           
           <Col className='text-center py-3 text-info mr-4'>
@@ -26,7 +26,7 @@ const Footer = () => {
             </ul>
           </Col>
            <Col>
-               <h1 className='text-center text-info'><img src={logo}></img></h1>
+               <h1 className='text-center text-info'><img src={logo} alt="logo"></img></h1>
            </Col>
           <Col className='text-center py-3 text-info'>
             <ul className='list-unstyled'>

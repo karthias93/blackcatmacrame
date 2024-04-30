@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Row, Col, Container } from "react-bootstrap";
 import Product from "./Product";
 import Message from "./Message";
 import Loader from "./Loader";

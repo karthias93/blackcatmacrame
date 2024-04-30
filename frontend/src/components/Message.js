@@ -1,19 +1,6 @@
-// import React from 'react'
-// import { Alert } from 'react-bootstrap'
-
-// const Message = ({ variant, children }) => {
-//   return <Alert variant={variant}>{children}</Alert>
-// }
-
-// Message.defaultProps = {
-//   variant: 'info',
-// }
-
-// export default Message
-
 import React from 'react';
 
-const Message = ({ variant, children }) => {
+const Message = ({ variant = 'info', children }) => {
   const alertClasses = {
     info: 'bg-blue-100 border-blue-500 text-blue-700',
     success: 'bg-green-100 border-green-500 text-green-700',
@@ -26,10 +13,6 @@ const Message = ({ variant, children }) => {
       {children}
     </div>
   );
-};
-
-Message.defaultProps = {
-  variant: 'info',
 };
 
 export default Message;
