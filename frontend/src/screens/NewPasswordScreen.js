@@ -42,7 +42,7 @@ const NewPasswordScreen = ({ history, match }) => {
                 history.push('/login');
             }
         }
-    }, [loading, message, error]);
+    }, [loading, message, error, history]);
 
 
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Card, CardGroup} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import Rating from "./Rating";
 import ProductCarousel from "./ProductCarousel";
 import "./products.css";

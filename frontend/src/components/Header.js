@@ -1,14 +1,14 @@
 import React from "react";
-import {Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {LinkContainer} from "react-router-bootstrap";
 import {Navbar, Nav, Container, NavDropdown} from "react-bootstrap";
 
-import SearchBox from "./SearchBox";
 import {logout} from "../actions/userActions";
 import "../screens/homescreen.css";
 import Avatar from "./Avatar";
-import Logo from './blackcatlogo2.jpg'
+import Logo from './../images/blackcatlogo2.jpg'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -83,7 +83,7 @@ const Header = () => {
 							) : (
 								<LinkContainer to="/login">
 									<Nav.Link>
-										<i className="fas fa-user"></i> Sign In
+										<FontAwesomeIcon icon={faUser} /> Sign In
 									</Nav.Link>
 								</LinkContainer>
 							)}
@@ -103,7 +103,7 @@ const Header = () => {
 							)}
 							<LinkContainer to="/cart">
 								<Nav.Link>
-									<i className="fas fa-shopping-cart text-info" id="shopping_cart_icon"></i>
+									<FontAwesomeIcon icon={faShoppingCart} className="text-info" id="shopping_cart_icon" />
 								</Nav.Link>
 							</LinkContainer>
 						</Nav>

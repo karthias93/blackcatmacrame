@@ -2,6 +2,8 @@ import {Image} from "react-bootstrap";
 import React from "react";
 import ArrowIcon from "../components/svg/icons/ArrowIcon";
 import {Button} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const btnStyle = {
 	border: "none",
@@ -61,7 +63,7 @@ export default function EditProductImageGallery({imageArr, setImages}) {
 									className="btn-sm"
 									onClick={() => deleteImage(image)}
 								>
-									<i className="fas fa-trash"></i>
+									<FontAwesomeIcon icon={faTrash} />
 								</Button>
 
 								<button style={btnStyle} onClick={(e) => moveImageToRight(e, i)}>

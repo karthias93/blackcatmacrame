@@ -6,6 +6,8 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import {listUsers, deleteUser} from "../actions/userActions";
 import Avatar from "../components/Avatar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faEdit, faTimes, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const UserListScreen = ({history}) => {
 	const dispatch = useDispatch();
@@ -65,15 +67,15 @@ const UserListScreen = ({history}) => {
 								</td>
 								<td>
 									{user.isAdmin ? (
-										<i className="fas fa-check" style={{color: "green"}}></i>
+										<FontAwesomeIcon icon={faCheck} style={{color: "green"}} />
 									) : (
-										<i className="fas fa-times" style={{color: "red"}}></i>
+										<FontAwesomeIcon icon={faTimes} style={{color: "red"}} />
 									)}
 								</td>
 								<td>
 									<LinkContainer to={`/admin/user/${user._id}/edit`}>
 										<Button variant="light" className="btn-sm">
-											<i className="fas fa-edit"></i>
+											<FontAwesomeIcon icon={faEdit} />
 										</Button>
 									</LinkContainer>
 									<Button
@@ -81,7 +83,7 @@ const UserListScreen = ({history}) => {
 										className="btn-sm"
 										onClick={() => deleteHandler(user._id)}
 									>
-										<i className="fas fa-trash"></i>
+										<FontAwesomeIcon icon={faTrash} />
 									</Button>
 								</td>
 							</tr>

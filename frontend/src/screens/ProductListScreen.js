@@ -8,6 +8,8 @@ import Paginate from "../components/Paginate";
 import {listProducts, deleteProduct, createProduct} from "../actions/productActions";
 import {PRODUCT_CREATE_RESET} from "../constants/productConstants";
 import ProductCarousel from "../components/ProductCarousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ProductListScreen = ({history, match}) => {
 	const pageNumber = match.params.pageNumber || 1;
@@ -76,7 +78,8 @@ const ProductListScreen = ({history, match}) => {
 				</Col>
 				<Col className="text-right">
 					<Button className="my-3" onClick={createProductHandler}>
-						<i className="fas fa-plus"></i> Create Product
+						<FontAwesomeIcon icon={faPlus} />
+						Create Product
 					</Button>
 				</Col>
 			</Row>
@@ -118,7 +121,7 @@ const ProductListScreen = ({history, match}) => {
 									<td>
 										<LinkContainer to={`/admin/product/${product._id}/edit`}>
 											<Button variant="light" className="btn-sm">
-												<i className="fas fa-edit"></i>
+												<FontAwesomeIcon icon={faEdit} />
 											</Button>
 										</LinkContainer>
 										<Button
@@ -126,7 +129,7 @@ const ProductListScreen = ({history, match}) => {
 											className="btn-sm"
 											onClick={() => deleteHandler(product._id)}
 										>
-											<i className="fas fa-trash"></i>
+											<FontAwesomeIcon icon={faTrash} />
 										</Button>
 									</td>
 								</tr>

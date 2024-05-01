@@ -53,7 +53,7 @@ export default UncontrolledExample;
 import React from 'react'
 import './products.css'
 import {Carousel, Row, Container, Col} from 'react-bootstrap'
-import reviewBackgroundImg from '../components/images/testimonials-bg.jpg'
+import reviewBackgroundImg from '../../images/testimonials-bg.jpg'
 
 
 

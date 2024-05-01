@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import jenny from '../components/images/gennyAbout.jpg'
+import { Container, Row, Col } from 'react-bootstrap'
+import jenny from '../images/gennyAbout.jpg'
 import "./products.css";
 
 function Story() {
@@ -10,7 +10,7 @@ function Story() {
           <h1 className='text-center'>All About Me</h1>
         </Row>
         <Row className='d-flex justify-content-center '>
-           <img src={jenny} id="about_me_pic" />
+           <img src={jenny} id="about_me_pic" alt='about-me-pic'/>
         </Row>
         <Row>
           <Col>

@@ -9,6 +9,10 @@ import Testimonials from "../components/Testimonials";
 import Meta from "../components/Meta";
 import {listProducts} from "../actions/productActions";
 import "./homescreen.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEtsy, faFacebook, faInstagram, faPinterest } from "@fortawesome/free-brands-svg-icons";
+import blackcat6 from '../images/blackcat6.jpg'
+import blackcat5 from '../images/blackcat5.jpg'
 
 const HomeScreen = ({match}) => {
 	const keyword = match.params.keyword;
@@ -34,12 +38,24 @@ const HomeScreen = ({match}) => {
 				</h4>
 				<br />
                   <Col>
-				      <h5 className="text-center"><a href="https://www.facebook.com/MacrameBlackCat"><i className="fa-brands fa-facebook footer-icons"></i></a><a href="https://www.instagram.com/macrameblackcat/?fbclid=IwAR0vuZkalF3G0wG7Mr4G2GlLZSHpwUxf_ZMAIFZ8op5ApSLYCU76R8qWNfU"><i className="fa-brands fa-instagram footer-icons"></i></a> <a href="https://www.etsy.com/shop/MacrameBlackCat?fbclid=IwAR1A5vjBmlsHJOoa8k1dC6WVWdSjjd6Q9c-8mJxZRn4gMajTdp7ahSZBKjI"><i className="fa-brands fa-etsy footer-icons"></i></a><a href="https://www.pinterest.com/blackcatmacrame/?invite_code=96f1625f44a14a52a93506da06236db1&sender=340162715513308657"><i className="fa-brands fa-pinterest footer-icons"></i></a></h5>
-		
+				      <h5 className="text-center">
+						<a href="https://www.facebook.com/MacrameBlackCat">
+							<FontAwesomeIcon icon={faFacebook} className="footer-icons" />
+						</a>
+						<a href="https://www.instagram.com/macrameblackcat/?fbclid=IwAR0vuZkalF3G0wG7Mr4G2GlLZSHpwUxf_ZMAIFZ8op5ApSLYCU76R8qWNfU">
+							<FontAwesomeIcon icon={faInstagram} className="footer-icons" />
+						</a>
+						<a href="https://www.etsy.com/shop/MacrameBlackCat?fbclid=IwAR1A5vjBmlsHJOoa8k1dC6WVWdSjjd6Q9c-8mJxZRn4gMajTdp7ahSZBKjI">
+							<FontAwesomeIcon icon={faEtsy} className="footer-icons" />
+						</a>
+						<a href="https://www.pinterest.com/blackcatmacrame/?invite_code=96f1625f44a14a52a93506da06236db1&sender=340162715513308657">
+							<FontAwesomeIcon icon={faPinterest} className="footer-icons" />
+						</a>
+					</h5>
 				  </Col>
 				<Col className="cat_col d-flex justify-content-between align-items-end">
-					<img src="../images/blackcat6.jpg" className="cat_image" alt="black cata"></img>
-					<img src="../images/blackcat5.jpg" className="cat_image" alt="black cata"></img>
+					<img src={blackcat6} className="cat_image" alt="black cata"></img>
+					<img src={blackcat5} className="cat_image" alt="black cata"></img>
 				</Col>
 			</Container>
 			<Container fluid className="featured_products_container">

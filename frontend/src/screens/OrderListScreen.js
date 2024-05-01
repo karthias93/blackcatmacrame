@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listOrders } from '../actions/orderActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -54,14 +56,14 @@ const OrderListScreen = ({ history }) => {
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
                   ) : (
-                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    <FontAwesomeIcon icon={faTimes} style={{ color: 'red' }}/>
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
                     order.deliveredAt.substring(0, 10)
                   ) : (
-                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    <FontAwesomeIcon icon={faTimes} style={{ color: 'red' }}/>
                   )}
                 </td>
                 <td>

@@ -8,6 +8,8 @@ import {getUserDetails, updateUserProfile} from "../actions/userActions";
 import {listMyOrders} from "../actions/orderActions";
 import {USER_UPDATE_PROFILE_RESET} from "../constants/userConstants";
 import EditAvatar from "../components/EditAvatar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileScreen = ({location, history}) => {
 	const [name, setName] = useState("");
@@ -145,14 +147,14 @@ const ProfileScreen = ({location, history}) => {
 										{order.isPaid ? (
 											order.paidAt.substring(0, 10)
 										) : (
-											<i className="fas fa-times" style={{color: "red"}}></i>
+											<FontAwesomeIcon icon={faTimes} style={{color: "red"}} />
 										)}
 									</td>
 									<td>
 										{order.isDelivered ? (
 											order.deliveredAt.substring(0, 10)
 										) : (
-											<i className="fas fa-times" style={{color: "red"}}></i>
+											<FontAwesomeIcon icon={faTimes} style={{color: "red"}} />
 										)}
 									</td>
 									<td>

@@ -1,6 +1,5 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
-import Rain from '../components/images/rain.jpg'
 
 function Testimonials() {
   return (
@@ -8,7 +7,7 @@ function Testimonials() {
     
     <Carousel className='first_carousel'>
       <Carousel.Item className='carousel_item'>
-        <img className="d-block w-100 carousel_item" />
+        <img className="d-block w-100 carousel_item" alt='carousel'/>
         <Carousel.Caption>
         <h1 className='text-center '>This is what our Awesome Customers Had To Say!</h1>
         <p className='text-center text-dark'>"Genny has such beautiful macrame work and the quality is really spectacular. She
@@ -21,7 +20,7 @@ function Testimonials() {
       </Carousel.Item>
 
       <Carousel.Item className='carousel_item'>
-        <img className="d-block w-100 carousel_item" />
+        <img className="d-block w-100 carousel_item" alt='carousel'/>
         <Carousel.Caption>
         <h1 className='text-center '>This is what our Awesome Customers Had To Say!</h1>
         <p className='text-center text-dark'>"Genny has such beautiful macrame work and the quality is really spectacular. She
@@ -34,7 +33,7 @@ function Testimonials() {
       </Carousel.Item>
 
       <Carousel.Item className='carousel_item'>
-        <img className="d-block w-100 carousel_item" />
+        <img className="d-block w-100 carousel_item" alt='carousel'/>
         <Carousel.Caption>
           <h1 className='text-center '>This is what our Awesome Customers Had To Say!</h1>
           <h3>Third slide label</h3>

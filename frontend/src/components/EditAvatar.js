@@ -3,6 +3,8 @@ import {Form} from "react-bootstrap";
 import Loader from "./Loader";
 import Avatar from "./Avatar";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 export default function EditAvatar({avatar, setAvatar}) {
 	const [uploadingAvatar, setUploadingAvatar] = useState(false);
@@ -36,7 +38,7 @@ export default function EditAvatar({avatar, setAvatar}) {
 			)}
 			<Form.File id="avatar" custom>
 				<Form.File.Label data-browse="Update Avatar" style={{width: "230px"}}>
-					<i className="fas fa-pen"></i>
+					<FontAwesomeIcon icon={faPen} />
 				</Form.File.Label>
 				<Form.File.Input onChange={uploadFileHandler} />
 			</Form.File>
