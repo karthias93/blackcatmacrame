@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema(
 		},
 		password: {
 			type: String,
-			required: true
+			required: false
 		},
 		isAdmin: {
 			type: Boolean,
@@ -25,6 +25,11 @@ const userSchema = mongoose.Schema(
 			type: String,
 			required: true,
 			default: "default"
+		},
+		authSource: {
+			type: String,
+			enum: ['self', 'google'],
+			default: 'self'
 		}
 	},
 	{

@@ -36,7 +36,7 @@ import Miscellaneous from './components/Miscellaneous'
 
 const App = () => {
 
-
+  console.log(process.env, 'env')
   return (
     <Router>
       <Header />

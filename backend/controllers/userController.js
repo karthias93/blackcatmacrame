@@ -3,8 +3,10 @@ import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
 import sgMail from '@sendgrid/mail';
 import dotenv from 'dotenv';
+import { OAuth2Client } from 'google-auth-library';
 dotenv.config();
 
+const client = new OAuth2Client()
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // import deleteSingleImageFromCloud from "../utils/deleteSingleImageFromCloud.js";
@@ -249,6 +251,48 @@ const updateUser = asyncHandler(async (req, res) => {
 	}
 });
 
+// @desc    Auth user & get token
+// @route   POST /api/users/google-auth
+// @access  Public
+const googleAuthUser = asyncHandler(async (req, res) => {
+	const { credential, client_id } = req.body;
+	try {
+		const ticket = await client.verifyIdToken({
+			idToken: credential,
+			audience: client_id,
+		});
+		const payload = ticket.getPayload();
+		const email = payload['email'];
+		console.log(payload)
+		let user = await User.findOne({ email });
+		if (!user) {
+			// Create a user if they do not exist
+			user = await User.create({
+				email,
+				name: `${payload.given_name} ${payload.family_name}`,
+				authSource: 'google',
+			});
+		}
+		if (user) {
+			res.status(201).json({
+				_id: user._id,
+				name: user.name,
+				email: user.email,
+				avatar: user.avatar,
+				isAdmin: user.isAdmin,
+				token: generateToken(user._id)
+			});
+		} else {
+			res.status(400);
+			throw new Error("Invalid user data");
+		}
+		res.status(200).json({ payload });
+	} catch (err) {
+		console.log(err, 'err')
+		res.status(400).json({ err });
+	}
+});
+
 export {
 	authUser,
 	registerUser,
@@ -260,4 +304,5 @@ export {
 	updateUser,
 	resetPassword,
 	updatePassword,
+	googleAuthUser
 };

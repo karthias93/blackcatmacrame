@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
+import GoogleAuth from '../components/GoogleAuth'
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
@@ -76,6 +77,7 @@ const LoginScreen = ({ location, history }) => {
           </Link>
         </Col>
       </Row>
+      <GoogleAuth />
     </FormContainer>
   )
 }
