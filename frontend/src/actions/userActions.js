@@ -33,6 +33,7 @@ import {
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 import { googleLogout } from '@react-oauth/google'
+import Cookies from 'js-cookie';
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -57,7 +58,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     })
 
-    localStorage.setItem('userInfo', JSON.stringify(data))
+    Cookies.set('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -140,7 +141,7 @@ export const updatePassword = (password, userId) => async (dispatch) => {
 }
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem('userInfo')
+  Cookies.remove('userInfo')
   localStorage.removeItem('cartItems')
   localStorage.removeItem('shippingAddress')
   localStorage.removeItem('paymentMethod')
@@ -180,7 +181,7 @@ export const register = (name, email, password) => async (dispatch) => {
       payload: data,
     })
 
-    localStorage.setItem('userInfo', JSON.stringify(data))
+    Cookies.set('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -256,7 +257,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       type: USER_LOGIN_SUCCESS,
       payload: data,
     })
-    localStorage.setItem('userInfo', JSON.stringify(data))
+    Cookies.set('userInfo', JSON.stringify(data))
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -404,7 +405,7 @@ export const googleAuth = (credentialResponse) => async (dispatch) => {
       payload: data,
     })
 
-    localStorage.setItem('userInfo', JSON.stringify(data))
+    Cookies.set('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,

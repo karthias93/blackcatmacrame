@@ -7,12 +7,11 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import {getOrderDetails, payOrder, deliverOrder} from "../actions/orderActions";
 import {ORDER_PAY_RESET, ORDER_DELIVER_RESET} from "../constants/orderConstants";
-import STRIPE_PUBLIC_KEY from "../constants/stripePublicKey";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/ChechoutForm";
 
-const stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const OrderScreen = ({match, history}) => {
 	const [clientSecret, setClientSecret] = useState("");

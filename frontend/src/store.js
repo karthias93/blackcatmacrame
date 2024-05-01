@@ -30,6 +30,7 @@ import {
   orderListMyReducer,
   orderListReducer,
 } from './reducers/orderReducers'
+import Cookies from 'js-cookie';
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -61,8 +62,8 @@ const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : []
 
-const userInfoFromStorage = localStorage.getItem('userInfo')
-  ? JSON.parse(localStorage.getItem('userInfo'))
+const userInfoFromStorage = Cookies.get('userInfo')
+  ? JSON.parse(Cookies.get('userInfo'))
   : null
 
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress')

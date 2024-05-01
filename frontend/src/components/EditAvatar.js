@@ -36,12 +36,12 @@ export default function EditAvatar({avatar, setAvatar}) {
 			) : (
 				<Avatar size={"80px"} url={avatar} className={"mb-2"} />
 			)}
-			<Form.File id="avatar" custom>
-				<Form.File.Label data-browse="Update Avatar" style={{width: "230px"}}>
+			<Form.Group controlId="avatar" custom className="mb-3">
+				<Form.Label htmlFor="avatar" data-browse="Update Avatar" style={{width: "230px"}}>
 					<FontAwesomeIcon icon={faPen} />
-				</Form.File.Label>
-				<Form.File.Input onChange={uploadFileHandler} />
-			</Form.File>
+				</Form.Label>
+				<Form.Control type="file" id="avatar" onChange={uploadFileHandler} />
+			</Form.Group >
 		</Form.Group>
 	);
 }

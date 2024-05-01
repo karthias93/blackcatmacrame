@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-const Meta = ({ title, description, keywords }) => {
+const Meta = ({ title = 'Black Cat Macrame', description = 'Hand Craftred Micro Macrame', keywords = 'Macrame, Micro Macrame, Wall Art, Custom Hand Made' }) => {
   return (
     <Helmet>
       <title>{title}</title>
@@ -9,12 +9,6 @@ const Meta = ({ title, description, keywords }) => {
       <meta name='keyword' content={keywords} />
     </Helmet>
   )
-}
-
-Meta.defaultProps = {
-  title: 'Black Cat Macrame',
-  description: 'Hand Craftred Micro Macrame',
-  keywords: 'Macrame, Micro Macrame, Wall Art, Custom Hand Made',
 }
 
 export default Meta
