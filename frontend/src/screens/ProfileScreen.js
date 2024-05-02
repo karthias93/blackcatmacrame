@@ -34,7 +34,7 @@ const ProfileScreen = ({location, history}) => {
 	const orderListMy = useSelector((state) => state.orderListMy);
 	const {loading: loadingOrders, error: errorOrders, orders} = orderListMy;
 
-	const [chartData, setChartData] = useState({
+	const [chartData] = useState({
 		labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4'],
 		datasets: [
 		  {
