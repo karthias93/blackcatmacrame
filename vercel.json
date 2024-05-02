@@ -6,10 +6,5 @@
     "env": {
       "NODE_ENV": "production"
     },
-    "builds": [
-        {
-          "src": "package.json",
-          "use": "@now/static-build"
-        }
-    ]
+    "buildCommand": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   }
