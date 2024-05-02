@@ -2,7 +2,7 @@
   "name": "Black Cat Macrame",
   "version": "1.0.0",
   "description": "Macrame MERN E-Commerce",
-  "main": "server.js",
+  "main": "backend/server.js",
   "type": "module",
   "scripts": {
     "start": "node backend/server",
