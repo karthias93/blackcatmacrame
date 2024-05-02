@@ -284,3 +284,10 @@ to{
  margin-left: 10px;
  /* display: none; */
 }
+
+.pieChart{
+  width: 400px;
+}
+.pieChart canvas{
+  width: 100%;
+}
