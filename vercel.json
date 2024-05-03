@@ -1,10 +1,1 @@
-{
-  "version": 2,
-  "routes": [
-    { "src": "/(.*)", "dest": "/backend/server.js" }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "buildCommand": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
-}
+{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/backend" }] }
