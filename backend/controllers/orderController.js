@@ -136,24 +136,24 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 	  .then((response) => console.log('Email sent successfully'))
 	  .catch((error) => console.error(error));
 
-	  async function sendSMSNotification(phoneNumber) {
-		const accountSid = process.env.TWILIO_ACCOUNT_SID;
-		const authToken = process.env.TWILIO_AUTH_TOKEN;
-		const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+  async function sendSMSNotification(phoneNumber) {
+	const accountSid = process.env.TWILIO_ACCOUNT_SID;
+	const authToken = process.env.TWILIO_AUTH_TOKEN;
+	const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 	  
-		const client = twilio(accountSid, authToken);
+	const client = twilio(accountSid, authToken);
 	  
-		try {
-		  await client.messages.create({
+	try {
+		await client.messages.create({
 			body: 'Your order has been successfully paid. Thank you for your business!',
 			from: twilioPhoneNumber,
 			to: phoneNumber
-		  });
-		  console.log('SMS sent successfully');
-		} catch (error) {
-		  console.error('Error sending SMS:', error);
-		}
-	  }
+		});
+		console.log('SMS sent successfully');
+	} catch (error) {
+		console.error('Error sending SMS:', error);
+	}
+	}
   }
   
 // @desc    Update order to delivered
