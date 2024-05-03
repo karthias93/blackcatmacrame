@@ -39,7 +39,7 @@ const ProfileScreen = ({location, history}) => {
 		datasets: [
 		  {
 			label: 'Percentage',
-			data: [30, 25, 15, 30],
+			data: [25, 25, 25, 25],
 			backgroundColor: ['#ffbbcc', '#c4dffe', '#d6ffc4', '#ffd9b3'],
 			borderColor: ['#ffbbcc', '#c4dffe', '#d6ffc4', '#ffd9b3'],
 		  },
@@ -109,7 +109,7 @@ const ProfileScreen = ({location, history}) => {
 
 	return (
 		<Row>
-		  <Col md={3}>
+		  <Col md={3} className="my-3">
 			<h2>User Profile</h2>
 			{message && <Message variant="danger">{message}</Message>}
 			{}
@@ -122,7 +122,7 @@ const ProfileScreen = ({location, history}) => {
 			  <Form onSubmit={submitHandler}>
 				<EditAvatar avatar={avatar} setAvatar={setAvatar} />
 	  
-				<Form.Group controlId="name">
+				<Form.Group controlId="name" className="mb-2">
 				  <Form.Label>Name</Form.Label>
 				  <Form.Control
 					type="name"
@@ -132,7 +132,7 @@ const ProfileScreen = ({location, history}) => {
 				  ></Form.Control>
 				</Form.Group>
 	  
-				<Form.Group controlId="email">
+				<Form.Group controlId="email" className="mb-2">
 				  <Form.Label>Email Address</Form.Label>
 				  <Form.Control
 					type="email"
@@ -142,7 +142,7 @@ const ProfileScreen = ({location, history}) => {
 				  ></Form.Control>
 				</Form.Group>
 	  
-				<Form.Group controlId="password">
+				<Form.Group controlId="password" className="mb-2">
 				  <Form.Label>Password</Form.Label>
 				  <Form.Control
 					type="password"
@@ -152,7 +152,7 @@ const ProfileScreen = ({location, history}) => {
 				  ></Form.Control>
 				</Form.Group>
 	  
-				<Form.Group controlId="confirmPassword">
+				<Form.Group controlId="confirmPassword" className="mb-3">
 				  <Form.Label>Confirm Password</Form.Label>
 				  <Form.Control
 					type="password"
@@ -219,32 +219,6 @@ const ProfileScreen = ({location, history}) => {
 				  </tbody>
 				</Table>
 			  </div>
-			)}
-			{loadingOrders ? (
-			  <Loader />
-			) : errorOrders ? (
-			  <Message variant="danger">{errorOrders}</Message>
-			) : (
-			<div>
-			  <Table striped bordered hover responsive className="table-sm">
-				<thead>
-				  <tr>
-					<th>Profit</th>
-					<th>Loss</th>
-					<th>User</th>
-					<th>Order</th>
-				  </tr>
-				</thead>
-				<tbody>
-				  <tr>
-					<td>Data 1</td>
-					<td>Data 1</td>
-					<td>Data 1</td>
-					<td>Data 1</td>
-				  </tr>
-				</tbody>
-			  </Table>
-			</div>
 			)}
 			<div className="block m-auto pieChart my-3">
                 <canvas id="myChart"></canvas>

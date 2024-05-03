@@ -54,33 +54,108 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @desc    Update order to paid
 // @route   GET /api/orders/:id/pay
 // @access  Private
+// const updateOrderToPaid = asyncHandler(async (req, res) => {
+// 	try {
+// 		const order = await Order.findById(req.params.id);
+
+// 		if (order) {
+// 			order.isPaid = true;
+// 			order.paidAt = Date.now();
+// 			order.paymentResult = {
+// 				id: req.body.id,
+// 				status: req.body.status,
+// 				update_time: req.body.update_time,
+// 				email_address: req.body.email_address
+// 			};
+
+// 			const updatedOrder = await order.save();
+
+// 			res.json(updatedOrder);
+// 		} else {
+// 			res.status(404);
+// 			throw new Error("Order not found");
+// 		}
+// 	} catch (error) {
+// 		res.status(500).json(error);
+// 		console.log(error);
+// 	}
+// });
+
+const twilio = require('twilio');
+
 const updateOrderToPaid = asyncHandler(async (req, res) => {
 	try {
-		const order = await Order.findById(req.params.id);
-
-		if (order) {
-			order.isPaid = true;
-			order.paidAt = Date.now();
-			order.paymentResult = {
-				id: req.body.id,
-				status: req.body.status,
-				update_time: req.body.update_time,
-				email_address: req.body.email_address
-			};
-
-			const updatedOrder = await order.save();
-
-			res.json(updatedOrder);
-		} else {
-			res.status(404);
-			throw new Error("Order not found");
+	  const order = await Order.findById(req.params.id);
+  
+	  if (order) {
+		order.isPaid = true;
+		order.paidAt = Date.now();
+		order.paymentResult = {
+		  id: req.body.id,
+		  status: req.body.status,
+		  update_time: req.body.update_time,
+		  email_address: req.body.email_address,
+		};
+  
+		const updatedOrder = await order.save();
+  
+		if (updatedOrder.isPaid) {
+		  await sendEmailNotification(updatedOrder.email_address);
+		  await sendSMSNotification(updatedOrder.phone_number);
 		}
+  
+		res.json(updatedOrder);
+	  } else {
+		res.status(404);
+		throw new Error("Order not found");
+	  }
 	} catch (error) {
-		res.status(500).json(error);
-		console.log(error);
+	  res.status(500).json(error);
+	  console.log(error);
 	}
-});
+  });
+  
+  async function sendEmailNotification(emailAddress) {
+	const sgApiKey = process.env.SENDGRID_API_KEY; 
+  
+	const emailData = {
+	  to: emailAddress,
+	  from: "your-sender-email@example.com",
+	  subject: "Your Order Has Been Paid Successfully",
+	  text: `Hi there,\nYour order (ID: ${updatedOrder._id}) has been successfully paid. Thank you for your business!`,
+	};
+  
+	const sg = require('sendgrid')(sgApiKey);
+	const request = sg.emptyRequest({
+	  method: 'POST',
+	  path: '/v3/mail/send',
+	  body: emailData,
+	});
+  
+	sg.APIRequest(request)
+	  .then((response) => console.log('Email sent successfully'))
+	  .catch((error) => console.error(error));
 
+	  async function sendSMSNotification(phoneNumber) {
+		const accountSid = process.env.TWILIO_ACCOUNT_SID;
+		const authToken = process.env.TWILIO_AUTH_TOKEN;
+		const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+	  
+		const client = twilio(accountSid, authToken);
+	  
+		try {
+		  await client.messages.create({
+			body: 'Your order has been successfully paid. Thank you for your business!',
+			from: twilioPhoneNumber,
+			to: phoneNumber
+		  });
+		  console.log('SMS sent successfully');
+		} catch (error) {
+		  console.error('Error sending SMS:', error);
+		}
+	  }
+  }
+  
 // @desc    Update order to delivered
 // @route   GET /api/orders/:id/deliver
 // @access  Private/Admin
