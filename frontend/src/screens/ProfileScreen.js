@@ -10,7 +10,7 @@ import {USER_UPDATE_PROFILE_RESET} from "../constants/userConstants";
 import EditAvatar from "../components/EditAvatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Chart, PieController } from 'chart.js/auto';
+import { Chart, PieController } from 'chart.js/auto'
 
 const ProfileScreen = ({location, history}) => {
 	const [name, setName] = useState("");
@@ -34,7 +34,7 @@ const ProfileScreen = ({location, history}) => {
 	const orderListMy = useSelector((state) => state.orderListMy);
 	const {loading: loadingOrders, error: errorOrders, orders} = orderListMy;
 
-	const [chartData, setChartData] = useState({
+	const [chartData] = useState({
 		labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4'],
 		datasets: [
 		  {

@@ -1,8 +1,8 @@
 {
-  "name": "Black Cat Macrame",
+  "name": "blackcatmacrame",
   "version": "1.0.0",
   "description": "Macrame MERN E-Commerce",
-  "main": "server.js",
+  "main": "backend/server.js",
   "type": "module",
   "scripts": {
     "start": "node backend/server",
@@ -11,14 +11,13 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "postinstall": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Allen Young",
   "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "bcryptjs": "^2.4.3",
-    "chart.js": "^4.4.2",
     "cloudinary": "^1.30.0",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
