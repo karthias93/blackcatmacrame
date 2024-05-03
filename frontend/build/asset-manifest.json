@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.80309904.css",
-    "main.js": "/static/js/main.1cdacec3.js",
-    "static/media/product1.jpeg": "/static/media/product1.055237cf483fe67e1baa.jpeg",
-    "static/media/contactMe1.png": "/static/media/contactMe1.2e35248fbf19116fe25f.png",
-    "static/media/blueBubbles2.jpeg": "/static/media/blueBubbles2.97b54094d6282968496b.jpeg",
-    "static/media/gennyAbout.jpg": "/static/media/gennyAbout.581e78302c42c60c5c12.jpg",
-    "static/media/blackcat5.jpg": "/static/media/blackcat5.c81fa28c203c0e15ab21.jpg",
-    "static/media/blackcat6.jpg": "/static/media/blackcat6.bc82115313e203a5204f.jpg",
-    "static/media/blackcatlogo2.jpg": "/static/media/blackcatlogo2.62197e1242d2eb766cbe.jpg",
-    "static/media/defaultAvatar.webp": "/static/media/defaultAvatar.9999920b9e6c6830ebc4.webp",
-    "index.html": "/index.html",
-    "main.80309904.css.map": "/static/css/main.80309904.css.map",
-    "main.1cdacec3.js.map": "/static/js/main.1cdacec3.js.map"
+    "main.css": "./static/css/main.adb0517f.css",
+    "main.js": "./static/js/main.c2c5cc74.js",
+    "static/media/product1.jpeg": "./static/media/product1.055237cf483fe67e1baa.jpeg",
+    "static/media/contactMe1.png": "./static/media/contactMe1.2e35248fbf19116fe25f.png",
+    "static/media/blueBubbles2.jpeg": "./static/media/blueBubbles2.97b54094d6282968496b.jpeg",
+    "static/media/gennyAbout.jpg": "./static/media/gennyAbout.581e78302c42c60c5c12.jpg",
+    "static/media/blackcat5.jpg": "./static/media/blackcat5.c81fa28c203c0e15ab21.jpg",
+    "static/media/blackcat6.jpg": "./static/media/blackcat6.bc82115313e203a5204f.jpg",
+    "static/media/blackcatlogo2.jpg": "./static/media/blackcatlogo2.62197e1242d2eb766cbe.jpg",
+    "static/media/defaultAvatar.webp": "./static/media/defaultAvatar.9999920b9e6c6830ebc4.webp",
+    "index.html": "./index.html",
+    "main.adb0517f.css.map": "./static/css/main.adb0517f.css.map",
+    "main.c2c5cc74.js.map": "./static/js/main.c2c5cc74.js.map"
   },
   "entrypoints": [
-    "static/css/main.80309904.css",
-    "static/js/main.1cdacec3.js"
+    "static/css/main.adb0517f.css",
+    "static/js/main.c2c5cc74.js"
   ]
 }
