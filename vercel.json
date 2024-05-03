@@ -1,4 +1,4 @@
 { 
   "version": 2,
-  "routes": [{ "source": "/backend", "destination": "/backend/server.js" }]
+  "routes": [{ "src": "/backend", "dest": "/backend/server.js" }]
 }
