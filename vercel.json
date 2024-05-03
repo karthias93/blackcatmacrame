@@ -1,4 +1,4 @@
 { 
   "version": 2,
-  "rewrites": [{ "source": "/backend", "destination": "/backend/server.js" }]
+  "routes": [{ "source": "/backend", "destination": "/backend/server.js" }]
 }
