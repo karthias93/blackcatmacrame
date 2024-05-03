@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
+import twilio from 'twilio';
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -80,8 +81,6 @@ const getOrderById = asyncHandler(async (req, res) => {
 // 		console.log(error);
 // 	}
 // });
-
-const twilio = require('twilio');
 
 const updateOrderToPaid = asyncHandler(async (req, res) => {
 	try {
