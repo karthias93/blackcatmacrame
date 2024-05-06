@@ -11,7 +11,8 @@ import {
   updateUser,
   resetPassword,
   updatePassword,
-  googleAuthUser
+  googleAuthUser,
+  getUserChartData
 } from '../controllers/userController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
@@ -20,6 +21,8 @@ router.post('/login', authUser)
 router.post('/google-auth', googleAuthUser)
 router.post('/reset', resetPassword)
 router.post('/update_password', updatePassword)
+router
+  .get('/user-chart', protect, admin, getUserChartData)
 router
   .route('/profile')
   .get(protect, getUserProfile)

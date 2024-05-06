@@ -10,7 +10,8 @@ import {USER_UPDATE_PROFILE_RESET} from "../constants/userConstants";
 import EditAvatar from "../components/EditAvatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Chart, PieController } from 'chart.js/auto'
+import ProfitChart from "../components/ProfitChart";
+import UserChart from "../components/UserChart";
 
 const ProfileScreen = ({location, history}) => {
 	const [name, setName] = useState("");
@@ -33,54 +34,6 @@ const ProfileScreen = ({location, history}) => {
 
 	const orderListMy = useSelector((state) => state.orderListMy);
 	const {loading: loadingOrders, error: errorOrders, orders} = orderListMy;
-
-	const [chartData] = useState({
-		labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4'],
-		datasets: [
-		  {
-			label: 'Percentage',
-			data: [25, 25, 25, 25],
-			backgroundColor: ['#ffbbcc', '#c4dffe', '#d6ffc4', '#ffd9b3'],
-			borderColor: ['#ffbbcc', '#c4dffe', '#d6ffc4', '#ffd9b3'],
-		  },
-		],
-	  });
-	  useEffect(() => {
-		const ctx = document.getElementById('myChart').getContext('2d');
-		let chartInstance;
-	  
-		const createChart = () => {
-		  Chart.register(PieController);
-		  chartInstance = new Chart(ctx, {
-			type: 'pie',
-			data: chartData,
-			options: {
-			  responsive: true,
-			  plugins: {
-				legend: {
-				  display: true,
-				  position: 'top',
-				},
-				tooltip: {
-				  callbacks: {
-					label: (context) => `${context.label}: ${context.parsed}%`,
-				  },
-				},
-			  },
-			},
-		  });
-		};
-	  
-		if (chartInstance) {
-		  chartInstance.destroy(); 
-		}
-		createChart();
-		return () => {
-		  if (chartInstance) {
-			chartInstance.destroy();
-		  }
-		};
-	  }, [chartData]); 
 
 	useEffect(() => {
 		if (!userInfo) {
@@ -220,9 +173,14 @@ const ProfileScreen = ({location, history}) => {
 				</Table>
 			  </div>
 			)}
+			{userInfo && userInfo.isAdmin && (
 			<div className="block m-auto pieChart my-3">
-                <canvas id="myChart"></canvas>
-            </div>
+                <ProfitChart userInfo={userInfo} />
+            </div>)}
+			{userInfo && userInfo.isAdmin && (
+			<div className="block m-auto pieChart my-3">
+                <UserChart userInfo={userInfo} />
+            </div>)}
 		  </Col>
 		</Row>
 	  );

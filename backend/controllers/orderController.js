@@ -161,6 +161,30 @@ const getMyOrders = asyncHandler(async (req, res) => {
 	res.json(orders);
 });
 
+// @desc    Get profit data
+// @route   GET /api/orders/chart-data
+// @access  Private
+const getChartData = asyncHandler(async (req, res) => {
+	try {
+		const orderTotalsByDay = await Order.aggregate([
+		  {
+			$group: {
+			  _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
+			  total: { $sum: '$totalPrice' }
+			}
+		  },
+		  {
+			$sort: { '_id': 1 }
+		  }
+		]);
+	
+		console.log(orderTotalsByDay);
+		res.json(orderTotalsByDay);
+	  } catch (error) {
+		console.error(error);
+	  }
+});
+
 // @desc    Get all orders
 // @route   GET /api/orders
 // @access  Private/Admin
@@ -175,5 +199,6 @@ export {
 	updateOrderToPaid,
 	updateOrderToDelivered,
 	getMyOrders,
-	getOrders
+	getOrders,
+	getChartData
 };

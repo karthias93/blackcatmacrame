@@ -11,6 +11,7 @@ import {PRODUCT_UPDATE_RESET} from "../constants/productConstants";
 import EditProductImageGallery from "./EditProductImageGallery";
 
 const ProductEditScreen = ({match, history}) => {
+	console.log(match, 'match', history)
 	const productId = match.params.id;
 
 	const [name, setName] = useState("");
@@ -38,7 +39,7 @@ const ProductEditScreen = ({match, history}) => {
 		if (successUpdate) {
 			dispatch({type: PRODUCT_UPDATE_RESET});
 			history.push("/admin/productlist");
-		} else {
+		} else if (product) {
 			if (!product.name || product._id !== productId) {
 				dispatch(listProductDetails(productId));
 			} else {
@@ -130,12 +131,13 @@ const ProductEditScreen = ({match, history}) => {
 						<Form.Group controlId="image">
 							<Form.Label>Image</Form.Label>
 							<EditProductImageGallery imageArr={images} setImages={setImages} />
-							<Form.File
+							<Form.Control
+								type="file"
 								id="image-file"
 								label="Add New Image"
 								custom
 								onChange={uploadFileHandler}
-							></Form.File>
+							></Form.Control>
 							{uploading && <Loader />}
 						</Form.Group>
 

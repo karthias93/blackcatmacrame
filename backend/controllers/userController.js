@@ -4,6 +4,7 @@ import User from "../models/userModel.js";
 import sgMail from '@sendgrid/mail';
 import dotenv from 'dotenv';
 import { OAuth2Client } from 'google-auth-library';
+import Order from "../models/orderModel.js";
 dotenv.config();
 
 const client = new OAuth2Client()
@@ -184,6 +185,50 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+// @desc    Get  users chart data
+// @route   GET /api/users/user-chart
+// @access  Private/Admin
+const getUserChartData = asyncHandler(async (req, res) => {
+	try {
+		  const usersWithOrderCounts = await User.aggregate([
+			{
+			  $lookup: {
+				from: 'orders', // collection name
+				localField: '_id',
+				foreignField: 'user',
+				as: 'orders'
+			  }
+			},
+			{
+			  $addFields: {
+				totalOrderCount: {
+				  $reduce: {
+					input: '$orders',
+					initialValue: 0,
+					in: { $sum: ['$$value', 1] }
+				  }
+				}
+			  }
+			},
+			{
+			  $project: {
+				username: 1,
+				totalOrderCount: { $ifNull: ['$totalOrderCount', 0] }
+			  }
+			}
+		  ]);
+	  
+		  console.log(usersWithOrderCounts);
+		  const activeUser = usersWithOrderCounts.filter(d=>d.totalOrderCount !== 0);
+		res.json([
+			  { name: 'Total Users', value: usersWithOrderCounts.length },
+    { name: 'Active Users', value: activeUser.length }
+		]);
+	} catch (error) {
+		console.error(error);
+	}
+});
+
 // @desc    Get all users
 // @route   GET /api/users
 // @access  Private/Admin
@@ -304,5 +349,6 @@ export {
 	updateUser,
 	resetPassword,
 	updatePassword,
-	googleAuthUser
+	googleAuthUser,
+	getUserChartData
 };
