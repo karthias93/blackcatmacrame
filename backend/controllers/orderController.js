@@ -99,8 +99,8 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 		const updatedOrder = await order.save();
   
 		if (updatedOrder.isPaid) {
-		  await sendEmailNotification(updatedOrder.email_address);
-		  await sendSMSNotification(updatedOrder.phone_number);
+		  await sendEmailNotification(updatedOrder);
+		//   await sendSMSNotification(updatedOrder.phone_number);
 		}
   
 		res.json(updatedOrder);
@@ -114,11 +114,11 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 	}
   });
   
-  async function sendEmailNotification(emailAddress) {
+  async function sendEmailNotification(updatedOrder) {
 	const sgApiKey = process.env.SENDGRID_API_KEY; 
   
 	const emailData = {
-	  to: emailAddress,
+	  to: updatedOrder.paymentResult.emailAddress,
 	  from: "your-sender-email@example.com",
 	  subject: "Your Order Has Been Paid Successfully",
 	  text: `Hi there,\nYour order (ID: ${updatedOrder._id}) has been successfully paid. Thank you for your business!`,
@@ -134,6 +134,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 	sg.APIRequest(request)
 	  .then((response) => console.log('Email sent successfully'))
 	  .catch((error) => console.error(error));
+  }
 
   async function sendSMSNotification(phoneNumber) {
 	const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -151,7 +152,6 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 		console.log('SMS sent successfully');
 	} catch (error) {
 		console.error('Error sending SMS:', error);
-	}
 	}
   }
   

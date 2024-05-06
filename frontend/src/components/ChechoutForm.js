@@ -75,6 +75,7 @@ export default function CheckoutForm({successPaymentHandler, userEmail}) {
 			};
 			successPaymentHandler(paymentResult);
 		} else {
+			console.log(res, 'paymentIntent')
 			if (res.error.type === "card_error" || res.error.type === "validation_error") {
 				setMessage(res.error.message);
 			} else {
