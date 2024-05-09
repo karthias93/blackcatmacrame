@@ -1,0 +1,2 @@
+export const REACT_APP_GOOGLEAUTH_CLIENTID = '437129026157-if2akqhbunmpkalljpi2kmilr7uolm3a.apps.googleusercontent.com';
+export const REACT_APP_STRIPE_PUBLIC_KEY = 'pk_test_51PCzlJSI0qjVhuW9MPPgbkYYngGLvL1Ek89j8xZW7fFXWwWoZGpw9QqatYWydTXLGF5Ss9VwHafD76u8WSAhRd0200stm259Qc';
