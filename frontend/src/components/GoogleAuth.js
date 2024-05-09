@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { googleAuth } from '../actions/userActions';
 import { useDispatch } from 'react-redux';
-import { REACT_APP_GOOGLEAUTH_CLIENTID } from '../../constants';
+import { REACT_APP_GOOGLEAUTH_CLIENTID } from '../constants';
 
 const GoogleAuth = () => {
     const clientId = REACT_APP_GOOGLEAUTH_CLIENTID;

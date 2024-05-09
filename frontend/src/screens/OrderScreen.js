@@ -10,7 +10,7 @@ import {ORDER_PAY_RESET, ORDER_DELIVER_RESET} from "../constants/orderConstants"
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/ChechoutForm";
-import { REACT_APP_STRIPE_PUBLIC_KEY } from "../../constants";
+import { REACT_APP_STRIPE_PUBLIC_KEY } from "../constants";
 
 const stripePromise = loadStripe(REACT_APP_STRIPE_PUBLIC_KEY);
 
