@@ -25,5 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 .vscode/settings.json
 
-frontend/.env
+# frontend/.env
 .vercel
